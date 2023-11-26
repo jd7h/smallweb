@@ -219,8 +219,14 @@ def index():
         notes_list=notes_list,
     )
 
-
 @app.route("/favorite")
+@app.route("/note")
+@app.route("/appreciated")
+def not_implemented():
+    return "Unfortunately, this feature is not yet available for sw-dutch"
+
+
+#@app.route("/favorite")
 def favorite():
     global favorites_dict, time_saved_favorites
     url = request.args.get("url")
@@ -247,7 +253,7 @@ def favorite():
     return redirect(prefix + f"/?url={url}&{query_string}")
 
 
-@app.route("/note")
+#@app.route("/note")
 def note():
     global notes_dict, time_saved_notes
     url = request.args.get("url")
@@ -282,7 +288,7 @@ def note():
         return redirect(prefix + f"/?url={url}")
 
 
-@app.route("/appreciated")
+#@app.route("/appreciated")
 def appreciated():
     global master_feed
 
