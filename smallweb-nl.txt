@@ -1,0 +1,4 @@
+https://boekenblog.paulverhaeghe.com/feed/
+https://judithvanstegeren.com/blog/atom.xml
+https://eenvoudigleven.blogspot.com/feeds/posts/default
+https://berthub.eu/articles/index.xml

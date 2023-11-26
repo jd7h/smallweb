@@ -54,8 +54,8 @@ master_feed = False
 def update_all():
     global urls_cache, urls_yt_cache, master_feed
 
-    # url = "http://127.0.0.1:4000"  # testing with local feed
-    url = "https://kagi.com/api/v1/smallweb/feed/"
+    url = "http://127.0.0.1:4000/atom.xml"  # testing with local feed
+    # url = "https://kagi.com/api/v1/smallweb/feed/"
 
     check_feed = feedparser.parse(url)
     if check_feed:
@@ -90,6 +90,9 @@ def parse_date(date_string):
 def update_entries(url):
     feed = feedparser.parse(url)
     entries = feed.entries
+
+    print("Running update_entries()...")
+    print(len(entries), "entries found in feed", url)
 
     if len(entries):
         formatted_entries = []
