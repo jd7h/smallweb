@@ -6485,7 +6485,6 @@ https://otpok.com/feed/
 https://ounapuu.ee/posts/index.xml
 https://ourincrediblejourney.tumblr.com/rss
 https://out-of-cheese-error.netlify.app/feeds/all.rss.xml
-https://outflank.nl/blog/feed/
 https://outofthecomfortzone.frantzmiccoli.com/feed.xml
 https://overengineer.dev/blog/feeds/all.xml
 https://overreacted.io/rss.xml
@@ -9935,7 +9934,6 @@ https://www.noahlebovic.com/rss/
 https://www.noahw.org/Blog/Feed
 https://www.noise.pictures/feed.rss
 https://www.nomadicnotes.com/feed/
-https://www.noncommutativegeometry.nl/feed/
 https://www.norberhuis.nl/rss/
 https://www.notcheckmark.com/rss/
 https://www.notebookstories.com/feed/
