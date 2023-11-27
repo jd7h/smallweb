@@ -116,6 +116,10 @@ sources including:
 - https://hn-blogs.kronis.dev/all-blogs.html
 - https://dm.hn
 
+The seed list for Dutch blogs has been assembled from these sources:
+
+- @jd7h's blogroll
+- https://diggingthedigital.com/blogroll
 
 ### YouTube channels
 
