@@ -1,4 +1,5 @@
 import datetime
+import io
 
 import feedparser
 import feedwerk
@@ -10,6 +11,7 @@ from dateutil import parser as dateutil_parser
 
 from loguru import logger
 
+logger.remove()
 logger.add("small_web_feed.log")
 
 FEEDFILE = "../smallweb-nl.txt"
@@ -33,7 +35,7 @@ def atom_feed(posts):
             feed.add(title=post.get('title'), id=post.get('link'), updated=post.get('updated_dt'), published=post.get('published_dt'), author=post.get('author'))
         except Exception as e:
             logger.error(e)
-    #return feed.get_response()
+            logger.debug(str(post))
     return feed
 
 def main():
@@ -42,13 +44,28 @@ def main():
 
     collected_entries = []
     for feedlink in feeds:
+        logger.info(f"Scraping feed url {feedlink}")
+        # we parse the feed in two steps instead of with feedparser.parse
+        # because parse() occassionally hangs without feedback
+        try:
+            response = requests.get(feedlink, timeout=5)
+        except Exception as e:
+            logger.error(e)
+            continue
+        if not response.ok:
+            continue
         logger.info(f"Parsing feed url {feedlink}")
-        d = feedparser.parse(feedlink)
+        try:
+            d = feedparser.parse(io.BytesIO(response.content))
+        except Exception as e:
+            logger.error(e)
+            continue
         for entry in list(d.entries):
             # fix missing authors
             if not entry.get('author'):
                 entry['author'] = d['feed'].get('author') or ''
-
+            if not entry.get('title'):
+                entry['title'] = "-"
             # fix datetimes
             entry['published_dt'] = dateutil_parser.parse(entry["published"])
             entry['updated_dt'] = dateutil_parser.parse(entry["updated"])
